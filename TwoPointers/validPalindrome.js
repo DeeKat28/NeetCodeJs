@@ -7,20 +7,33 @@ var isPalindrome = function(s) {
     if (s.length == 0)
         return true;
     
+    s = s.toLowerCase();
     let start = 0;
     let end = s.length - 1;
     while (start < end) 
     {
-	console.log(start);
-	console.log(end);
-        while (!isAlphaNum(s[start])) {
-            ++start;
+        while (start < end &&  
+               !(
+                    (s.charCodeAt(start) >= 48 && s.charCodeAt(start) <= 57) 
+                    || 
+                    (s.charCodeAt(start) >= 97 && s.charCodeAt(start) <= 122)
+                )
+                ) 
+        {
+            start++;
         }
-        while (!isAlphaNum(s[end])) {
-            --end;
+        while (start < end && 
+                !(
+                    (s.charCodeAt(end) >= 48 && s.charCodeAt(end) <= 57) 
+                    || 
+                    (s.charCodeAt(end) >= 97 && s.charCodeAt(end) <= 122)
+                )
+                ) 
+        {
+            end--;
         }
         
-        if (s[start] !== s[end]) {
+        if (start < end && s[start] !== s[end]) {
             return false;
         }
         start++;
@@ -38,22 +51,3 @@ var isPalindrome = function(s) {
 //     return true;
     
 };
-
-    let isAlphaNum = (c) => {
-	console.log(c);
-        if (
-		(c >= 48 && c <= 57)
-		||
-		(c >= 65 && c <= 90)
-		||
-		(c >= 97 && c <= 122)
-	)
- 	{
-            return true;
-        }
-        else {
-            return false;
-    }
-}
-
-isPalindrome("race a car");
