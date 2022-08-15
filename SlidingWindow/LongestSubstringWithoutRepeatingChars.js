@@ -39,7 +39,7 @@ var lengthOfLongestSubstring = function(s) {
     // }
     // return res;
     
-    // 
+    // O(n)
     let res = 0;
     const prev = new Array(256).fill(-1);
     let start = 0;
@@ -50,4 +50,18 @@ var lengthOfLongestSubstring = function(s) {
         prev[s.charCodeAt(end)] = end;
     }
     return res;
+    
+    // O(n)
+    // let l = 0;
+    // let res = 0;
+    // let charSet = new Set();
+    // for (let r = 0; r < s.length; r++) {
+    //     while (charSet.has(s[r])) {
+    //         charSet.delete(s[l]);
+    //         l++;
+    //     }
+    //     charSet.add(s[r]);
+    //     res = Math.max(res, r-l+1);
+    // }
+    // return res;
 };
